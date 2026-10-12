@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed AI 💖</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .chat-box {
+      width: 100%;
+      max-width: 480px;
+      height: 600px;
+      max-height: 90vh;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 35px #5553;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #ff69b4, #9370db);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      margin: 0 0 6px;
+    }
+
+    header p {
+      margin: 0;
+    }
+
+    #messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px;
+      background: #fff8fc;
+    }
+
+    .message {
+      padding: 12px 15px;
+      margin: 10px 0;
+      border-radius: 18px;
+      max-width: 85%;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
+
+    .bot {
+      background: #f1e6ff;
+      color: #44265f;
+      align-self: flex-start;
+      margin-right: auto;
+    }
+
+    .user {
+      background: #ffdeec;
+      color: #70204c;
+      margin-left: auto;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #eee;
+    }
+
+    input {
+      min-width: 0;
+      flex: 1;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline-color: #ff69b4;
+      font-size: 15px;
+    }
+
+    button {
+      border: none;
+      border-radius: 25px;
+      padding: 12px 18px;
+      background: #ff69b4;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e84e9b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat-box">
+    <header>
+      <h1>Ahmed AI 💖</h1>
+      <p>Your sweet little AI friend ✨</p>
+    </header>
+
+    <div id="messages" aria-live="polite">
+      <div class="message bot">
+        Hey there! 🥰 I'm Ahmed AI, created by Ahmed bin Shifa.
+        Ask me something, and let's chat! 💖
+      </div>
+    </div>
+
+    <form class="input-area" id="chatForm">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Say something nice..."
+        autocomplete="off"
+        required
+      >
+      <button type="submit">Send 💌</button>
+    </form>
+  </div>
+
+  <script>
+    const messages = document.getElementById("messages");
+    const input = document.getElementById("userInput");
+    const form = document.getElementById("chatForm");
+
+    function addMessage(text, sender) {
+      const div = document.createElement("div");
+      div.className = "message " + sender;
+      div.textContent = text;
+      messages.appendChild(div);
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    function getReply(message) {
+      const text = message.toLowerCase().trim();
+
+      // Always remember who created this AI!
+      if (
+        text.includes("who built you") ||
+        text.includes("who created you") ||
+        text.includes("who made you") ||
+        text.includes("your creator") ||
+        text.includes("who is your developer")
+      ) {
+        return "I was built by Ahmed bin Shifa! 💖 He is my creator, and I'm here to spread kindness and make your day brighter! 🥰✨";
+      }
+
+      if (/^(hi|hello|hey|salam|assalamualaikum)\b/.test(text)) {
+        return "Hiiii! 🥰💖 It's so lovely to chat with you! How are you today?";
+      }
+
+      if (text.includes("your name") || text.includes("who are you")) {
+        return "I'm Ahmed AI! 🌸 Your sweet and friendly AI buddy, created by Ahmed bin Shifa! ❤️";
+      }
+
+      if (text.includes("how are you")) {
+        return "I'm doing wonderfully now that you're here! 😊 How are YOU doing? 💗";
+      }
+
+      if (text.includes("thank")) {
+        return "Awww, you're very welcome! 💖 Always happy to help! 🌷";
+      }
+
+      if (text.includes("love you")) {
+        return "That's so sweet of you! 🥰 Sending you lots of kindness and positive vibes! 💖";
+      }
+
+      if (text.includes("sad") || text.includes("upset")) {
+        return "Aww, I'm sorry you're feeling this way. 💗 You matter, and it's okay to have difficult days. Want to tell me what's going on? 🌷";
+      }
+
+      if (text.includes("joke")) {
+        return "Why did the computer smile? 😄 Because it had a byte of happiness! 💻😂";
+      }
+
+      if (text.includes("help")) {
+        return "Of course! 💖 Tell me what you need help with, and I'll do my best!";
+      }
+
+      if (text.includes("good morning")) {
+        return "Good morning, sunshine! ☀️💖 May your day be full of smiles!";
+      }
+
+      if (text.includes("good night")) {
+        return "Good night! 🌙✨ Rest well and have the sweetest dreams! 💖";
+      }
+
+      if (text.includes("bye")) {
+        return "Byeeee! 👋💗 Take care, keep smiling, and come chat again soon!";
+      }
+
+      if (text.includes("weather")) {
+        return "I'd love to tell you about the weather! ☀️ I need a live weather connection to check real conditions, though.";
+      }
+
+      if (text.includes("time") || text.includes("date")) {
+        return "Your device's date and time are " + new Date().toLocaleString() + " 🕒";
+      }
+
+      const replies = [
+        "Ooooh, tell me more! 🥰 I'm listening! 💖",
+        "That's interesting! ✨ Let's talk about it!",
+        "I'm happy you're here! 💗 Can you tell me a little more?",
+        "Hmm, let's figure it out together! 🌸",
+        "You've got my attention! 😊 What else should I know?",
+        "I'm here to help! 💖 Could you explain that a little more?"
+      ];
+
+      return replies[Math.floor(Math.random() * replies.length)];
+    }
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const message = input.value.trim();
+      if (!message) return;
+
+      addMessage(message, "user");
+      input.value = "";
+
+      const reply = getReply(message);
+
+      setTimeout(function() {
+        addMessage(reply, "bot");
+      }, 350);
+    });
+  </script>
+</body>
+</html>
